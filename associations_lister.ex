@@ -1,5 +1,5 @@
 defmodule AssociationsLister do
-  def up do
+  def run() do
     repo = MyProject.Repo # your Repo
 
     file = File.open!("associations.csv", [:write, :utf8])
