@@ -1,10 +1,10 @@
 defmodule AssociationsLister do
-  def run() do
-    repo = MyProject.Repo # your Repo
+  @spec run(Ecto.Repo.t()) :: :ok
+  def run(repo) do
+    file_name = "associations.csv"
+    file = File.open!(file_name, [:write, :utf8])
 
-    file = File.open!("associations.csv", [:write, :utf8])
-
-    [~w(From To Association_name)]
+    [~w(From To Association_name)] # columns names
     |> CSV.encode()
     |> Enum.each(&IO.write(file, &1))  
 
